@@ -72,7 +72,6 @@ The assignment can also be reviewed online without downloading the files:
 - [README.md](./README.md) - submission overview
 - [API_TESTING.md](./API_TESTING.md) - API scope, results, evidence, and issues
 - [EchoGPT.postman_collection.json](./EchoGPT.postman_collection.json) - sanitized Postman collection
-- [EchoGPT_SQA_Assignment_Functional_and_Bug_Reports.py](./EchoGPT_SQA_Assignment_Functional_and_Bug_Reports.py) - workbook-generation source
 - [Software Quality Assurance (SQA) Internship at AppifyDevs.xlsx](./Software%20Quality%20Assurance%20%28SQA%29%20Internship%20at%20AppifyDevs.xlsx) - completed workbook
 - [Software Quality Assurance (SQA) Internship at AppifyDevs.pdf](./Software%20Quality%20Assurance%20%28SQA%29%20Internship%20at%20AppifyDevs.pdf) - exploratory report
 
