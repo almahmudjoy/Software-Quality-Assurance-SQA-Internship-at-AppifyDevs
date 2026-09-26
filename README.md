@@ -20,7 +20,7 @@ This repository contains functional testing, bug reporting, UI/UX review, explor
 ## Applications Tested
 
 - Chrome Extension: [EchoGPT - Multi-AI Chat Sidebar](https://chromewebstore.google.com/detail/echogpt-multi-ai-chat-sid/negimdcamohmoheiifgecbjgjepkcfhj)
-- Android Application: [EchoGPT Chat](https://play.google.com/store/apps/details?id=com.echogpt.chatapp&hl=en)
+- Android Application: [EchoChat](https://play.google.com/store/apps/details?id=com.echogpt.chatapp&hl=en)
 
 ## Main Findings
 
