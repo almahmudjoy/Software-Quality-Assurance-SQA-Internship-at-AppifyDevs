@@ -60,6 +60,13 @@ The Postman collection has been sanitized before publication. Import [EchoGPT.po
 
 Published Postman documentation: [View collection documentation](https://documenter.getpostman.com/view/53084089/2sBYB4K6oR)
 
+## Online Documents
+
+The assignment can also be reviewed online without downloading the files:
+
+- [Open Functional Test Cases, Bug Reports and UI/UX Review in Google Sheets](https://docs.google.com/spreadsheets/d/1Lt1Wt8XudaEWkDgFnbvUwv9aFdPO0lVt406bhLDDV8A/edit?gid=0#gid=0)
+- [Open Assignment Report in Google Docs](https://docs.google.com/document/d/1g2mBtNefjrJUs71d8bg_ognmcGX7IxMZkAlXC_qMxEE/edit?tab=t.0#heading=h.qg4sndjp1cr7)
+
 ## Repository Contents
 
 - [README.md](./README.md) - submission overview
