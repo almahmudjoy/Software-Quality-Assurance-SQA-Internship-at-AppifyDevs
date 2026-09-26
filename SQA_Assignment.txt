@@ -1,0 +1,61 @@
+Dear Candidate,
+
+Thank you for your interest in the Software Quality Assurance (SQA) Internship at AppifyDevs.
+
+As part of our recruitment process, we invite you to complete the technical assignment below. This assignment is designed to evaluate your testing knowledge, analytical thinking, bug reporting skills, and overall attention to detail.
+
+Applications to Test
+Chrome Extension
+https://chromewebstore.google.com/detail/echogpt-multi-ai-chat-sid/negimdcamohmoheiifgecbjgjepkcfhj
+
+Android Application
+https://play.google.com/store/apps/details?id=com.echogpt.chatapp&hl=en
+
+Assignment Requirements
+1. Functional Testing
+
+Prepare at least 30 functional test cases covering the application's core features.
+Include: Test Case ID, Feature, Preconditions, Test Steps, Expected Result, Actual Result, and Status.
+2. Bug Reporting
+
+Identify and report a minimum of 10 genuine issues.
+Each report should include:
+Bug ID
+Title
+Description
+Steps to Reproduce
+Expected Result
+Actual Result
+Severity
+Priority
+Environment
+Screenshot or Screen Recording
+3. UI/UX Review
+
+Provide at least 10 UI/UX improvement suggestions with supporting screenshots where applicable.
+4. Exploratory Testing
+
+Spend approximately 30–45 minutes performing exploratory testing.
+Submit a brief report highlighting your observations, edge cases, and recommendations.
+5. API Testing (Optional Bonus)
+
+If APIs are accessible, perform basic API testing using tools such as Postman, Bruno, or Insomnia.
+Submission
+Please submit a email ZIP file or github link containing:
+
+Functional Test Cases
+Bug Report
+UI/UX Review
+Exploratory Testing Report
+Screenshots and/or Screen Recordings
+Name your submission using the following format:
+
+FullName_SQA_Intern_Assignment.zip
+
+Please submit your completed assignment by [Submission Deadline : 27 September 2026].
+
+We encourage you to focus on the quality of your testing, documentation, and communication. Well-structured reports and clear observations are valued more than the number of issues identified.
+
+If you have any questions regarding the assignment, please feel free to reply to this email.
+
+We wish you the best of luck and look forward to reviewing your submission.

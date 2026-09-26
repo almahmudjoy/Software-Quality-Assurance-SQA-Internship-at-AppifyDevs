@@ -1,0 +1,1001 @@
+﻿{
+  "info": {
+    "_postman_id": "70dd6dae-439e-4959-b7b1-0f758051231b",
+    "name": "EchoGPT",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "53084089",
+    "_collection_link": "https://go.postman.co/collection/53084089-70dd6dae-439e-4959-b7b1-0f758051231b?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "API-001 â€” Valid Chat Generation",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Response contains data\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData).to.have.property(\"data\");\r\n});\r\n\r\npm.test(\"Response contains generated content\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData.data).to.have.property(\"content\");\r\n});\r\n\r\npm.test(\"Generated content is not empty\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData.data.content).to.not.be.empty;\r\n});\r\n\r\npm.test(\"Response message exists\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData).to.have.property(\"message\");\r\n});\r\n\r\npm.test(\"Response content is a string\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData.data.content).to.be.a(\"string\");\r\n});\r\n\r\npm.test(\"Correct model is returned\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData.data.model).to.eql(\"zai-org/GLM-5.2\");\r\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "accept",
+            "value": "*/*"
+          },
+          {
+            "key": "accept-language",
+            "value": "en-US,en;q=0.9,bn;q=0.8"
+          },
+          {
+            "key": "authorization",
+            "value": "Bearer {{bearer_token}}"
+          },
+          {
+            "key": "if-none-match",
+            "value": "W/\"6a-79j+055xXhp28DagwpziEM/sLuo\""
+          },
+          {
+            "key": "priority",
+            "value": "u=1, i"
+          },
+          {
+            "key": "sec-ch-ua",
+            "value": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\""
+          },
+          {
+            "key": "sec-ch-ua-mobile",
+            "value": "?0"
+          },
+          {
+            "key": "sec-ch-ua-platform",
+            "value": "\"Windows\""
+          },
+          {
+            "key": "sec-fetch-dest",
+            "value": "empty"
+          },
+          {
+            "key": "sec-fetch-mode",
+            "value": "cors"
+          },
+          {
+            "key": "sec-fetch-site",
+            "value": "none"
+          },
+          {
+            "key": "sec-fetch-storage-access",
+            "value": "active"
+          },
+          {
+            "key": "user-agent",
+            "value": "Mozilla/5.0 ^(Windows NT 10.0; Win64; x64^) AppleWebKit/537.36 ^(KHTML, like Gecko^) Chrome/153.0.0.0 Safari/537.36"
+          },
+          {
+            "key": "Cookie",
+            "value": "{{echoGPT_cookie}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"messageId\": \"msg_1790434025307\",\r\n    \"message\": \"what is 7+2?\",\r\n    \"chatId\": \"9c3f8b06-d866-4ac0-9e03-c639dbbee978\",\r\n    \"model\": \"zai-org/GLM-5.2\",\r\n    \"stream\": false\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://api.echogpt.live/v1/chat/generate",
+          "protocol": "https",
+          "host": [
+            "api",
+            "echogpt",
+            "live"
+          ],
+          "path": [
+            "v1",
+            "chat",
+            "generate"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "API-002 â€”Negative Testing: Empty Message",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Response contains data\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData).to.have.property(\"data\");\r\n});\r\n\r\npm.test(\"Response contains generated content\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData.data).to.have.property(\"content\");\r\n});\r\n\r\npm.test(\"Generated content is not empty\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData.data.content).to.not.be.empty;\r\n});\r\n\r\npm.test(\"Response message exists\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData).to.have.property(\"message\");\r\n});\r\n\r\npm.test(\"Response content is a string\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData.data.content).to.be.a(\"string\");\r\n});\r\n\r\npm.test(\"Correct model is returned\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData.data.model).to.eql(\"zai-org/GLM-5.2\");\r\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "accept",
+            "value": "*/*"
+          },
+          {
+            "key": "accept-language",
+            "value": "en-US,en;q=0.9,bn;q=0.8"
+          },
+          {
+            "key": "authorization",
+            "value": "Bearer {{bearer_token}}"
+          },
+          {
+            "key": "if-none-match",
+            "value": "W/\"6a-79j+055xXhp28DagwpziEM/sLuo\""
+          },
+          {
+            "key": "priority",
+            "value": "u=1, i"
+          },
+          {
+            "key": "sec-ch-ua",
+            "value": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\""
+          },
+          {
+            "key": "sec-ch-ua-mobile",
+            "value": "?0"
+          },
+          {
+            "key": "sec-ch-ua-platform",
+            "value": "\"Windows\""
+          },
+          {
+            "key": "sec-fetch-dest",
+            "value": "empty"
+          },
+          {
+            "key": "sec-fetch-mode",
+            "value": "cors"
+          },
+          {
+            "key": "sec-fetch-site",
+            "value": "none"
+          },
+          {
+            "key": "sec-fetch-storage-access",
+            "value": "active"
+          },
+          {
+            "key": "user-agent",
+            "value": "Mozilla/5.0 ^(Windows NT 10.0; Win64; x64^) AppleWebKit/537.36 ^(KHTML, like Gecko^) Chrome/153.0.0.0 Safari/537.36"
+          },
+          {
+            "key": "Cookie",
+            "value": "{{echoGPT_cookie}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"messageId\": \"msg_test_empty_001\",\r\n  \"message\": \"\",\r\n  \"chatId\": \"9c3f8b06-d866-4ac0-9e03-c639dbbee978\",\r\n  \"model\": \"zai-org/GLM-5.2\",\r\n  \"stream\": false\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://api.echogpt.live/v1/chat/generate",
+          "protocol": "https",
+          "host": [
+            "api",
+            "echogpt",
+            "live"
+          ],
+          "path": [
+            "v1",
+            "chat",
+            "generate"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "API-003 â€” Missing message Field",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Response contains data\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData).to.have.property(\"data\");\r\n});\r\n\r\npm.test(\"Response contains generated content\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData.data).to.have.property(\"content\");\r\n});\r\n\r\npm.test(\"Generated content is not empty\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData.data.content).to.not.be.empty;\r\n});\r\n\r\npm.test(\"Response message exists\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData).to.have.property(\"message\");\r\n});\r\n\r\npm.test(\"Response content is a string\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData.data.content).to.be.a(\"string\");\r\n});\r\n\r\npm.test(\"Correct model is returned\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData.data.model).to.eql(\"zai-org/GLM-5.2\");\r\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "accept",
+            "value": "*/*"
+          },
+          {
+            "key": "accept-language",
+            "value": "en-US,en;q=0.9,bn;q=0.8"
+          },
+          {
+            "key": "authorization",
+            "value": "Bearer {{bearer_token}}"
+          },
+          {
+            "key": "if-none-match",
+            "value": "W/\"6a-79j+055xXhp28DagwpziEM/sLuo\""
+          },
+          {
+            "key": "priority",
+            "value": "u=1, i"
+          },
+          {
+            "key": "sec-ch-ua",
+            "value": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\""
+          },
+          {
+            "key": "sec-ch-ua-mobile",
+            "value": "?0"
+          },
+          {
+            "key": "sec-ch-ua-platform",
+            "value": "\"Windows\""
+          },
+          {
+            "key": "sec-fetch-dest",
+            "value": "empty"
+          },
+          {
+            "key": "sec-fetch-mode",
+            "value": "cors"
+          },
+          {
+            "key": "sec-fetch-site",
+            "value": "none"
+          },
+          {
+            "key": "sec-fetch-storage-access",
+            "value": "active"
+          },
+          {
+            "key": "user-agent",
+            "value": "Mozilla/5.0 ^(Windows NT 10.0; Win64; x64^) AppleWebKit/537.36 ^(KHTML, like Gecko^) Chrome/153.0.0.0 Safari/537.36"
+          },
+          {
+            "key": "Cookie",
+            "value": "{{echoGPT_cookie}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"messageId\": \"msg_test_missing_001\",\r\n  \"chatId\": \"9c3f8b06-d866-4ac0-9e03-c639dbbee978\",\r\n  \"model\": \"zai-org/GLM-5.2\",\r\n  \"stream\": false\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://api.echogpt.live/v1/chat/generate",
+          "protocol": "https",
+          "host": [
+            "api",
+            "echogpt",
+            "live"
+          ],
+          "path": [
+            "v1",
+            "chat",
+            "generate"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "API-004 â€” Invalid message data type",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Response contains data\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData).to.have.property(\"data\");\r\n});\r\n\r\npm.test(\"Response contains generated content\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData.data).to.have.property(\"content\");\r\n});\r\n\r\npm.test(\"Generated content is not empty\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData.data.content).to.not.be.empty;\r\n});\r\n\r\npm.test(\"Response message exists\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData).to.have.property(\"message\");\r\n});\r\n\r\npm.test(\"Response content is a string\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData.data.content).to.be.a(\"string\");\r\n});\r\n\r\npm.test(\"Correct model is returned\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData.data.model).to.eql(\"zai-org/GLM-5.2\");\r\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "accept",
+            "value": "*/*"
+          },
+          {
+            "key": "accept-language",
+            "value": "en-US,en;q=0.9,bn;q=0.8"
+          },
+          {
+            "key": "authorization",
+            "value": "Bearer {{bearer_token}}"
+          },
+          {
+            "key": "if-none-match",
+            "value": "W/\"6a-79j+055xXhp28DagwpziEM/sLuo\""
+          },
+          {
+            "key": "priority",
+            "value": "u=1, i"
+          },
+          {
+            "key": "sec-ch-ua",
+            "value": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\""
+          },
+          {
+            "key": "sec-ch-ua-mobile",
+            "value": "?0"
+          },
+          {
+            "key": "sec-ch-ua-platform",
+            "value": "\"Windows\""
+          },
+          {
+            "key": "sec-fetch-dest",
+            "value": "empty"
+          },
+          {
+            "key": "sec-fetch-mode",
+            "value": "cors"
+          },
+          {
+            "key": "sec-fetch-site",
+            "value": "none"
+          },
+          {
+            "key": "sec-fetch-storage-access",
+            "value": "active"
+          },
+          {
+            "key": "user-agent",
+            "value": "Mozilla/5.0 ^(Windows NT 10.0; Win64; x64^) AppleWebKit/537.36 ^(KHTML, like Gecko^) Chrome/153.0.0.0 Safari/537.36"
+          },
+          {
+            "key": "Cookie",
+            "value": "{{echoGPT_cookie}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"messageId\": \"msg_test_type_001\",\r\n  \"message\": 12345,\r\n  \"chatId\": \"9c3f8b06-d866-4ac0-9e03-c639dbbee978\",\r\n  \"model\": \"zai-org/GLM-5.2\",\r\n  \"stream\": false\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://api.echogpt.live/v1/chat/generate",
+          "protocol": "https",
+          "host": [
+            "api",
+            "echogpt",
+            "live"
+          ],
+          "path": [
+            "v1",
+            "chat",
+            "generate"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "API-005 â€” Invalid Model",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Response contains data\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData).to.have.property(\"data\");\r\n});\r\n\r\npm.test(\"Response contains generated content\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData.data).to.have.property(\"content\");\r\n});\r\n\r\npm.test(\"Generated content is not empty\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData.data.content).to.not.be.empty;\r\n});\r\n\r\npm.test(\"Response message exists\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData).to.have.property(\"message\");\r\n});\r\n\r\npm.test(\"Response content is a string\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData.data.content).to.be.a(\"string\");\r\n});\r\n\r\npm.test(\"Correct model is returned\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData.data.model).to.eql(\"zai-org/GLM-5.2\");\r\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "accept",
+            "value": "*/*"
+          },
+          {
+            "key": "accept-language",
+            "value": "en-US,en;q=0.9,bn;q=0.8"
+          },
+          {
+            "key": "authorization",
+            "value": "Bearer {{bearer_token}}"
+          },
+          {
+            "key": "if-none-match",
+            "value": "W/\"6a-79j+055xXhp28DagwpziEM/sLuo\""
+          },
+          {
+            "key": "priority",
+            "value": "u=1, i"
+          },
+          {
+            "key": "sec-ch-ua",
+            "value": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\""
+          },
+          {
+            "key": "sec-ch-ua-mobile",
+            "value": "?0"
+          },
+          {
+            "key": "sec-ch-ua-platform",
+            "value": "\"Windows\""
+          },
+          {
+            "key": "sec-fetch-dest",
+            "value": "empty"
+          },
+          {
+            "key": "sec-fetch-mode",
+            "value": "cors"
+          },
+          {
+            "key": "sec-fetch-site",
+            "value": "none"
+          },
+          {
+            "key": "sec-fetch-storage-access",
+            "value": "active"
+          },
+          {
+            "key": "user-agent",
+            "value": "Mozilla/5.0 ^(Windows NT 10.0; Win64; x64^) AppleWebKit/537.36 ^(KHTML, like Gecko^) Chrome/153.0.0.0 Safari/537.36"
+          },
+          {
+            "key": "Cookie",
+            "value": "{{echoGPT_cookie}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"messageId\": \"msg_test_invalid_model_001\",\r\n  \"message\": \"Hello\",\r\n  \"chatId\": \"9c3f8b06-d866-4ac0-9e03-c639dbbee978\",\r\n  \"model\": \"invalid-model-xyz\",\r\n  \"stream\": false\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://api.echogpt.live/v1/chat/generate",
+          "protocol": "https",
+          "host": [
+            "api",
+            "echogpt",
+            "live"
+          ],
+          "path": [
+            "v1",
+            "chat",
+            "generate"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "API-006 â€” Missing model field",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Response contains data\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData).to.have.property(\"data\");\r\n});\r\n\r\npm.test(\"Response contains generated content\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData.data).to.have.property(\"content\");\r\n});\r\n\r\npm.test(\"Generated content is not empty\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData.data.content).to.not.be.empty;\r\n});\r\n\r\npm.test(\"Response message exists\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData).to.have.property(\"message\");\r\n});\r\n\r\npm.test(\"Response content is a string\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData.data.content).to.be.a(\"string\");\r\n});\r\n\r\npm.test(\"Correct model is returned\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData.data.model).to.eql(\"zai-org/GLM-5.2\");\r\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "accept",
+            "value": "*/*"
+          },
+          {
+            "key": "accept-language",
+            "value": "en-US,en;q=0.9,bn;q=0.8"
+          },
+          {
+            "key": "authorization",
+            "value": "Bearer {{bearer_token}}"
+          },
+          {
+            "key": "if-none-match",
+            "value": "W/\"6a-79j+055xXhp28DagwpziEM/sLuo\""
+          },
+          {
+            "key": "priority",
+            "value": "u=1, i"
+          },
+          {
+            "key": "sec-ch-ua",
+            "value": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\""
+          },
+          {
+            "key": "sec-ch-ua-mobile",
+            "value": "?0"
+          },
+          {
+            "key": "sec-ch-ua-platform",
+            "value": "\"Windows\""
+          },
+          {
+            "key": "sec-fetch-dest",
+            "value": "empty"
+          },
+          {
+            "key": "sec-fetch-mode",
+            "value": "cors"
+          },
+          {
+            "key": "sec-fetch-site",
+            "value": "none"
+          },
+          {
+            "key": "sec-fetch-storage-access",
+            "value": "active"
+          },
+          {
+            "key": "user-agent",
+            "value": "Mozilla/5.0 ^(Windows NT 10.0; Win64; x64^) AppleWebKit/537.36 ^(KHTML, like Gecko^) Chrome/153.0.0.0 Safari/537.36"
+          },
+          {
+            "key": "Cookie",
+            "value": "{{echoGPT_cookie}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"messageId\": \"msg_test_missing_model_001\",\r\n  \"message\": \"Hello\",\r\n  \"chatId\": \"9c3f8b06-d866-4ac0-9e03-c639dbbee978\",\r\n  \"stream\": false\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://api.echogpt.live/v1/chat/generate",
+          "protocol": "https",
+          "host": [
+            "api",
+            "echogpt",
+            "live"
+          ],
+          "path": [
+            "v1",
+            "chat",
+            "generate"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "API-007 â€”  Missing MessageId",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Response contains data\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData).to.have.property(\"data\");\r\n});\r\n\r\npm.test(\"Response contains generated content\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData.data).to.have.property(\"content\");\r\n});\r\n\r\npm.test(\"Generated content is not empty\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData.data.content).to.not.be.empty;\r\n});\r\n\r\npm.test(\"Response message exists\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData).to.have.property(\"message\");\r\n});\r\n\r\npm.test(\"Response content is a string\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData.data.content).to.be.a(\"string\");\r\n});\r\n\r\npm.test(\"Correct model is returned\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData.data.model).to.eql(\"zai-org/GLM-5.2\");\r\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "accept",
+            "value": "*/*"
+          },
+          {
+            "key": "accept-language",
+            "value": "en-US,en;q=0.9,bn;q=0.8"
+          },
+          {
+            "key": "authorization",
+            "value": "Bearer {{bearer_token}}"
+          },
+          {
+            "key": "if-none-match",
+            "value": "W/\"6a-79j+055xXhp28DagwpziEM/sLuo\""
+          },
+          {
+            "key": "priority",
+            "value": "u=1, i"
+          },
+          {
+            "key": "sec-ch-ua",
+            "value": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\""
+          },
+          {
+            "key": "sec-ch-ua-mobile",
+            "value": "?0"
+          },
+          {
+            "key": "sec-ch-ua-platform",
+            "value": "\"Windows\""
+          },
+          {
+            "key": "sec-fetch-dest",
+            "value": "empty"
+          },
+          {
+            "key": "sec-fetch-mode",
+            "value": "cors"
+          },
+          {
+            "key": "sec-fetch-site",
+            "value": "none"
+          },
+          {
+            "key": "sec-fetch-storage-access",
+            "value": "active"
+          },
+          {
+            "key": "user-agent",
+            "value": "Mozilla/5.0 ^(Windows NT 10.0; Win64; x64^) AppleWebKit/537.36 ^(KHTML, like Gecko^) Chrome/153.0.0.0 Safari/537.36"
+          },
+          {
+            "key": "Cookie",
+            "value": "{{echoGPT_cookie}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"message\": \"Hello\",\r\n  \"chatId\": \"9c3f8b06-d866-4ac0-9e03-c639dbbee978\",\r\n  \"model\": \"zai-org/GLM-5.2\",\r\n  \"stream\": false\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://api.echogpt.live/v1/chat/generate",
+          "protocol": "https",
+          "host": [
+            "api",
+            "echogpt",
+            "live"
+          ],
+          "path": [
+            "v1",
+            "chat",
+            "generate"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "API-008 â€” Missing chatId",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Response contains data\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData).to.have.property(\"data\");\r\n});\r\n\r\npm.test(\"Response contains generated content\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData.data).to.have.property(\"content\");\r\n});\r\n\r\npm.test(\"Generated content is not empty\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData.data.content).to.not.be.empty;\r\n});\r\n\r\npm.test(\"Response message exists\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData).to.have.property(\"message\");\r\n});\r\n\r\npm.test(\"Response content is a string\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData.data.content).to.be.a(\"string\");\r\n});\r\n\r\npm.test(\"Correct model is returned\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData.data.model).to.eql(\"zai-org/GLM-5.2\");\r\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "accept",
+            "value": "*/*"
+          },
+          {
+            "key": "accept-language",
+            "value": "en-US,en;q=0.9,bn;q=0.8"
+          },
+          {
+            "key": "authorization",
+            "value": "Bearer {{bearer_token}}"
+          },
+          {
+            "key": "if-none-match",
+            "value": "W/\"6a-79j+055xXhp28DagwpziEM/sLuo\""
+          },
+          {
+            "key": "priority",
+            "value": "u=1, i"
+          },
+          {
+            "key": "sec-ch-ua",
+            "value": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\""
+          },
+          {
+            "key": "sec-ch-ua-mobile",
+            "value": "?0"
+          },
+          {
+            "key": "sec-ch-ua-platform",
+            "value": "\"Windows\""
+          },
+          {
+            "key": "sec-fetch-dest",
+            "value": "empty"
+          },
+          {
+            "key": "sec-fetch-mode",
+            "value": "cors"
+          },
+          {
+            "key": "sec-fetch-site",
+            "value": "none"
+          },
+          {
+            "key": "sec-fetch-storage-access",
+            "value": "active"
+          },
+          {
+            "key": "user-agent",
+            "value": "Mozilla/5.0 ^(Windows NT 10.0; Win64; x64^) AppleWebKit/537.36 ^(KHTML, like Gecko^) Chrome/153.0.0.0 Safari/537.36"
+          },
+          {
+            "key": "Cookie",
+            "value": "{{echoGPT_cookie}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"messageId\": \"msg_test_missing_chatid_001\",\r\n  \"message\": \"Hello\",\r\n  \"model\": \"zai-org/GLM-5.2\",\r\n  \"stream\": false\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://api.echogpt.live/v1/chat/generate",
+          "protocol": "https",
+          "host": [
+            "api",
+            "echogpt",
+            "live"
+          ],
+          "path": [
+            "v1",
+            "chat",
+            "generate"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "API-009 â€” Invalid stream data type",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Response contains data\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData).to.have.property(\"data\");\r\n});\r\n\r\npm.test(\"Response contains generated content\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData.data).to.have.property(\"content\");\r\n});\r\n\r\npm.test(\"Generated content is not empty\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData.data.content).to.not.be.empty;\r\n});\r\n\r\npm.test(\"Response message exists\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData).to.have.property(\"message\");\r\n});\r\n\r\npm.test(\"Response content is a string\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData.data.content).to.be.a(\"string\");\r\n});\r\n\r\npm.test(\"Correct model is returned\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData.data.model).to.eql(\"zai-org/GLM-5.2\");\r\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "accept",
+            "value": "*/*"
+          },
+          {
+            "key": "accept-language",
+            "value": "en-US,en;q=0.9,bn;q=0.8"
+          },
+          {
+            "key": "authorization",
+            "value": "Bearer {{bearer_token}}"
+          },
+          {
+            "key": "if-none-match",
+            "value": "W/\"6a-79j+055xXhp28DagwpziEM/sLuo\""
+          },
+          {
+            "key": "priority",
+            "value": "u=1, i"
+          },
+          {
+            "key": "sec-ch-ua",
+            "value": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\""
+          },
+          {
+            "key": "sec-ch-ua-mobile",
+            "value": "?0"
+          },
+          {
+            "key": "sec-ch-ua-platform",
+            "value": "\"Windows\""
+          },
+          {
+            "key": "sec-fetch-dest",
+            "value": "empty"
+          },
+          {
+            "key": "sec-fetch-mode",
+            "value": "cors"
+          },
+          {
+            "key": "sec-fetch-site",
+            "value": "none"
+          },
+          {
+            "key": "sec-fetch-storage-access",
+            "value": "active"
+          },
+          {
+            "key": "user-agent",
+            "value": "Mozilla/5.0 ^(Windows NT 10.0; Win64; x64^) AppleWebKit/537.36 ^(KHTML, like Gecko^) Chrome/153.0.0.0 Safari/537.36"
+          },
+          {
+            "key": "Cookie",
+            "value": "{{echoGPT_cookie}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"messageId\": \"msg_test_stream_type_001\",\r\n  \"message\": \"Hello\",\r\n  \"chatId\": \"9c3f8b06-d866-4ac0-9e03-c639dbbee978\",\r\n  \"model\": \"zai-org/GLM-5.2\",\r\n  \"stream\": \"false\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://api.echogpt.live/v1/chat/generate",
+          "protocol": "https",
+          "host": [
+            "api",
+            "echogpt",
+            "live"
+          ],
+          "path": [
+            "v1",
+            "chat",
+            "generate"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "API-010 â€” Valid stream: true",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Response contains data\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData).to.have.property(\"data\");\r\n});\r\n\r\npm.test(\"Response contains generated content\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData.data).to.have.property(\"content\");\r\n});\r\n\r\npm.test(\"Generated content is not empty\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData.data.content).to.not.be.empty;\r\n});\r\n\r\npm.test(\"Response message exists\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData).to.have.property(\"message\");\r\n});\r\n\r\npm.test(\"Response content is a string\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData.data.content).to.be.a(\"string\");\r\n});\r\n\r\npm.test(\"Correct model is returned\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData.data.model).to.eql(\"zai-org/GLM-5.2\");\r\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "accept",
+            "value": "*/*"
+          },
+          {
+            "key": "accept-language",
+            "value": "en-US,en;q=0.9,bn;q=0.8"
+          },
+          {
+            "key": "authorization",
+            "value": "Bearer {{bearer_token}}"
+          },
+          {
+            "key": "if-none-match",
+            "value": "W/\"6a-79j+055xXhp28DagwpziEM/sLuo\""
+          },
+          {
+            "key": "priority",
+            "value": "u=1, i"
+          },
+          {
+            "key": "sec-ch-ua",
+            "value": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\""
+          },
+          {
+            "key": "sec-ch-ua-mobile",
+            "value": "?0"
+          },
+          {
+            "key": "sec-ch-ua-platform",
+            "value": "\"Windows\""
+          },
+          {
+            "key": "sec-fetch-dest",
+            "value": "empty"
+          },
+          {
+            "key": "sec-fetch-mode",
+            "value": "cors"
+          },
+          {
+            "key": "sec-fetch-site",
+            "value": "none"
+          },
+          {
+            "key": "sec-fetch-storage-access",
+            "value": "active"
+          },
+          {
+            "key": "user-agent",
+            "value": "Mozilla/5.0 ^(Windows NT 10.0; Win64; x64^) AppleWebKit/537.36 ^(KHTML, like Gecko^) Chrome/153.0.0.0 Safari/537.36"
+          },
+          {
+            "key": "Cookie",
+            "value": "{{echoGPT_cookie}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"messageId\": \"msg_test_stream_true_001\",\r\n  \"message\": \"Hello\",\r\n  \"chatId\": \"9c3f8b06-d866-4ac0-9e03-c639dbbee978\",\r\n  \"model\": \"zai-org/GLM-5.2\",\r\n  \"stream\": true\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://api.echogpt.live/v1/chat/generate",
+          "protocol": "https",
+          "host": [
+            "api",
+            "echogpt",
+            "live"
+          ],
+          "path": [
+            "v1",
+            "chat",
+            "generate"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
